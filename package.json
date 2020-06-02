@@ -10,7 +10,7 @@
     "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
   },
   "engines":{
-  "node": "12.6.3"
+  "node": "latest"
   },
   "license": "ISC",
   "dependencies": {
