@@ -9,6 +9,9 @@
     "fix": "eslint --fix .",
     "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
   },
+  "engines":{
+  "node": "12.6.3"
+  },
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -33,12 +36,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/robmccandless/project2.git"
+    "url": "git+https://github.com/raej1428/project_2.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rachael Gladwin",
   "bugs": {
-    "url": "https://github.com/robmccandless/project2/issues"
+    "url": "https://github.com/raej1428/project_2/issues"
   },
-  "homepage": "https://github.com/robmccandless/project2#readme"
+  "homepage": "https://github.com/raej1428/project_2#readme"
 }
