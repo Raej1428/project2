@@ -13,8 +13,10 @@ var db = {};
 if (connection.use_env_variable) {
     var sequelize = new Sequelize(process.env[connection.use_env_variable], connection);
 } else {
-    var sequelize = new Sequelize(connection.database, connection.user, connection.password, connection)
-    };
+    var sequelize = new Sequelize('recipes_app_db', 'root', 'password', {
+        host: 'localhost',
+        dialect: 'mysql'
+    });
 }
 
 
