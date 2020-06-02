@@ -1,10 +1,13 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
+var sslRedirect = require('heroku-ssl-redirect');
 var express = require("express");
 // Sets up the Express App
 // =============================================================
 var app = express();
+
+app.use(sslRedirect());
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
