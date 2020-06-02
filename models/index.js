@@ -11,12 +11,10 @@ var connection = require(__dirname + "/../config/config.js")[env];
 var db = {};
 
 if (connection.use_env_variable) {
-    var sequelize = new Sequelize(process.env[connection.use_env_variable]);
+    var sequelize = new Sequelize(process.env[connection.use_env_variable], connection);
 } else {
-    var sequelize = new Sequelize('recipes_app_db', 'root', 'password', {
-        host: 'localhost',
-        dialect: 'mysql' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-    });
+    var sequelize = new Sequelize(connection.database, connection.user, connection.password, connection)
+    };
 }
 
 
