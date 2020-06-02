@@ -11,7 +11,7 @@ var connection = require(__dirname + "/../config/config.js")[env];
 var db = {};
 
 if (connection.use_env_variable) {
-    var sequelize = new Sequelize(process.env[connection.use_env_variable], connection);
+    var sequelize = new Sequelize(process.env[connection.use_env_variable]);
 } else {
     var sequelize = new Sequelize('recipes_app_db', 'root', 'password', {
         host: 'localhost',
