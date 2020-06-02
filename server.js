@@ -2,10 +2,19 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+var mysql = require("mysql");
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+var connection = mysql.createConnection(process.env.JAWSDB_URL);
+connection.connect(function(err) {
+    if (err) {
+        console.error("error connecting: " + err.stack);
+        return;
+    }
+    console.log("connected as id " + connection.threadId);
+});
 // Requiring our models for syncing
 var db = require("./models");
 // Sets up the Express app to handle data parsing
