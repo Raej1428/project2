@@ -1,7 +1,7 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
-var sslRedirect = require('heroku-ssl-redirect');
+// var sslRedirect = require('heroku-ssl-redirect');
 var express = require("express");
 // Sets up the Express App
 // =============================================================
@@ -18,7 +18,7 @@ app.use(express.json());
 // Static directory
 app.use(express.static(__dirname + '/public/'));
 
-app.use(sslRedirect());
+// app.use(sslRedirect());
 // Routes
 // =============================================================
 require("./routes/html-routes.js")(app);
