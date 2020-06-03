@@ -21,7 +21,7 @@ app.use(express.static(__dirname + '/public/'));
 // app.use(sslRedirect());
 // Routes
 // =============================================================
-require("./routes/html-routes.js")(app);
+require("./routes/html-Routes")(app);
 require("./routes/chef-api-routes.js")(app);
 require("./routes/recipes-api-routes.js")(app);
 require("./routes/comment-api-routes.js")(app);
