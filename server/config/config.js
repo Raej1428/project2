@@ -1,22 +1,24 @@
-require('dotenv').config()
+require('dotenv').config();
+require('mysql2');
 
 module.exports = {
     development: {
-        username: process.env.user,
-        password: process.env.password,
-        database: process.env.database,
-        host: process.env.host,
+        database: process.env.DATABASE,
+        username: process.env.USER,
+        password: process.env.PASSWORD,
+        host: process.env.HOST,
         dialect: 'mysql'
     },
     test: {
-        username: process.env.user,
-        password: process.env.password,
-        database: process.env.database,
-        host: process.env.host,
+        database: process.env.DATABASE,
+        username: process.env.USER,
+        password: process.env.PASSWORD,
+        host: process.env.HOST,
         dialect: 'mysql'
     },
     production: {
         use_env_variable: process.env.JAWSDB_URL,
+        insecureAuth: true,
         dialect: 'mysql'
     }
     

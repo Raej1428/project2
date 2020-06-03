@@ -1,39 +1,41 @@
-'use strict';
+"use strict";
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.js')[env];
-const db = {};
+require("dotenv").config();
+require("mysql2");
 
-let sequelize;
+var fs = require("fs");
+var path = require("path");
+var Sequelize = require("sequelize");
+var basename = path.basename(module.filename);
+var env = process.env.NODE_ENV || "development";
+var config = require(__dirname + "/../config/config")[env];
+var db = {};
+
 if (config.use_env_variable) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+    var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password,
-    {
-      host: 'localhost',
-      dialect: 'mysql' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-    }, config);
+    var sequelize = new Sequelize('recipes_app_db', 'root', 'password', {
+        host: 'localhost',
+        dialect: 'mysql' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+    });
 }
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
-    db[model.name] = model;
-  });
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+fs.readdirSync(__dirname)
+    .filter(function(file) {
+        return (
+            file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
+        );
+    })
+    .forEach(function(file) {
+        var model = sequelize.import(path.join(__dirname, file));
+        db[model.name] = model;
+    });
+
+Object.keys(db).forEach(function(modelName) {
+    if (db[modelName].associate) {
+        db[modelName].associate(db);
+    }
 });
 
 db.sequelize = sequelize;

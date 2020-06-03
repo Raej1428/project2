@@ -7,11 +7,10 @@ var express = require("express");
 // =============================================================
 var app = express();
 
-app.use(sslRedirect());
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
-var db = require("./models");
+var db = require("./server/models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,6 +18,7 @@ app.use(express.json());
 // Static directory
 app.use(express.static(__dirname + '/public/'));
 
+app.use(sslRedirect());
 // Routes
 // =============================================================
 require("./routes/html-routes.js")(app);
