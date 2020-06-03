@@ -4,14 +4,14 @@ require('mysql2');
 module.exports = {
     development: {
         database: process.env.DATABASE,
-        username: process.env.USER,
+        username: process.env.USERNAME,
         password: process.env.PASSWORD,
         host: process.env.HOST,
         dialect: 'mysql'
     },
     test: {
         database: process.env.DATABASE,
-        username: process.env.USER,
+        username: process.env.USERNAME,
         password: process.env.PASSWORD,
         host: process.env.HOST,
         dialect: 'mysql'
